@@ -1,0 +1,3 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_1='/home/dem4ply/Documentos/programacion/proyectos/python/django/where_is_my_bus/.git'
