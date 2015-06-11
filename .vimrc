@@ -14,7 +14,7 @@ set tm=500
 set hlsearch
 
 filetype on
-filetype indent on
+filetype indent off
 set nocp
 filetype plugin on
 
@@ -24,6 +24,14 @@ au FileType python setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
 au FileType html setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
 au FileType javascript setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
 au FileType php setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
+au FileType handlebars setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
+au FileType objcpp setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
+au FileType objcpp setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
+au FileType objc setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
+au FileType xml setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
+au FileType cfml setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
+au FileType cfscript setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
+au FileType sql setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
 
 "	backup
 set backup
