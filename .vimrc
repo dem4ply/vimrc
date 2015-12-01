@@ -28,8 +28,12 @@ set foldlevel=4
 " el _ es el fin de una palabra
 set iskeyword-=_
 
+" el _ es el fin de una palabra
+set iskeyword-=_
+
 au FileType c setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
 au FileType cpp setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
+
 au FileType python setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
 au FileType html setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
 au FileType javascript setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
