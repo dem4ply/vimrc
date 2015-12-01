@@ -17,6 +17,16 @@ filetype on
 filetype indent off
 set nocp
 filetype plugin on
+syntax on
+
+let python_highlight_all = 1
+
+set foldmethod=syntax
+set foldcolumn=1
+set foldlevel=4
+
+" el _ es el fin de una palabra
+set iskeyword-=_
 
 au FileType c setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
 au FileType cpp setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
@@ -31,12 +41,16 @@ au FileType objc setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
 au FileType xml setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
 au FileType cfml setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
 au FileType cfscript setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
+au FileType rst setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
 au FileType sql setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
+
+autocmd FileType python setlocal foldenable foldmethod=syntax
 
 "	backup
 set backup
 set backupdir=~/.vim_runtime/vim_backup
 
+set formatprg=par\ -w80jeq
 
 " personalisa los colores
 set t_Co=256
@@ -99,11 +113,9 @@ let g:user_zen_expandabbr_key = '<c-y>'
 
 let g:use_zen_complete_tag = 1
 
-
 set foldmethod=syntax
 set foldcolumn=1
 set foldlevel=4
-
 
 function! JavaScriptFold() 
 	setl foldmethod=syntax
@@ -111,9 +123,10 @@ function! JavaScriptFold()
 	syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
 
 	function! FoldText()
-	return substitute(getline(v:foldstart), '{.*', '{...}', '')
+		return substitute(getline(v:foldstart), '{.*', '{...}', '')
 	endfunction
 	setl foldtext=FoldText()
 endfunction
 au FileType javascript call JavaScriptFold()
 au FileType javascript setl fen
+
