@@ -13,10 +13,15 @@ set tm=500
 " esto es para que se marque lo que busque
 set hlsearch
 
-filetype on
+"DEBUG
+call pathogen#infect('~/.vim/bundle/{}')
+call pathogen#helptags()
+filetype off
 filetype indent off
 set nocp
 filetype plugin on
+syntax on
+
 syntax on
 
 let python_highlight_all = 1
@@ -134,3 +139,8 @@ endfunction
 au FileType javascript call JavaScriptFold()
 au FileType javascript setl fen
 
+
+"configuracion de jedi
+let g:jedi#use_tabs_not_buffers = 1
+let g:jedi#use_splits_not_buffers = "left"
+let g:jedi#completions_enabled = 1
