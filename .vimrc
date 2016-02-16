@@ -52,6 +52,7 @@ au FileType cfml setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
 au FileType cfscript setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
 au FileType rst setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
 au FileType sql setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
+au FileType java setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
 
 autocmd FileType python setlocal foldenable foldmethod=syntax
 
