@@ -1,3 +1,11 @@
+"call pathogen#runtime_append_all_bundles()
+call pathogen#infect('~/.vim/bundle/{}')
+call pathogen#helptags()
+"DOLOR
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
 "	generales
 syntax on
 set ruler	"show the line number on the bar"
@@ -14,8 +22,6 @@ set tm=500
 set hlsearch
 
 "DEBUG
-call pathogen#infect('~/.vim/bundle/{}')
-call pathogen#helptags()
 filetype off
 filetype indent off
 set nocp
@@ -73,16 +79,16 @@ colorscheme chlordane
 " mapeo de teclas
 :set pastetoggle=<F11>
 " movimiento entre splits
-map <S-UP> <C-W><UP>
-map <S-DOWN> <C-W><DOWN>
-map <S-LEFT> <C-W><LEFT>
-map <S-RIGHT> <C-W><RIGHT>
+map <C-k> <C-W><UP>
+map <C-j> <C-W><DOWN>
+map <C-h> <C-W><LEFT>
+map <C-l> <C-W><RIGHT>
 
 " cambiar el tamaño de split
-map <S-C-UP> <C-W>-
-map <S-C-DOWN> <C-W>+
-map <S-C-LEFT> <C-W><
-map <S-C-RIGHT> <C-W>>
+"map <S-C-k> <C-W>-
+"map <S-C-j> <C-W>+
+"map <S-C-h> <C-W><
+"map <S-C-l> <C-W>>
 
 
 
