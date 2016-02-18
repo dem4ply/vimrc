@@ -90,7 +90,12 @@ map <C-l> <C-W><RIGHT>
 "map <S-C-h> <C-W><
 "map <S-C-l> <C-W>>
 
-
+" Bubble single lines
+nmap <C-Up> ddkP
+nmap <C-Down> ddp
+" Bubble multiple lines
+vmap <C-Up> xkP`[V`]
+vmap <C-Down> xp`[V`]
 
 " explorador de carpeta
 map <F2> :NERDTreeToggle <cr>
@@ -102,6 +107,8 @@ map <F4> :FufFile <cr>
 map  <C-t> :tabnew <CR>
 " mapeo de los tags de c c++
 map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+" historias de undos
+nnoremap <F5> :GundoToggle<CR>
 
 "map <F10> :set paste</F10> </cr><cr>
 "map <F11> :set nopaste </F11></cr><cr>
@@ -151,3 +158,4 @@ au FileType javascript setl fen
 let g:jedi#use_tabs_not_buffers = 1
 let g:jedi#use_splits_not_buffers = "left"
 let g:jedi#completions_enabled = 1
+
