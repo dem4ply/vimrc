@@ -159,3 +159,14 @@ let g:jedi#use_tabs_not_buffers = 1
 let g:jedi#use_splits_not_buffers = "left"
 let g:jedi#completions_enabled = 1
 
+
+" mapa de claves
+" tab activa el snippet
+" ctrl+j se mueve al siguiente campo
+" ctrl+k se mueve al anteriror campo
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+"cuendo eites snippets se abrirar en un split vertical
+let g:UltiSnipsEditSplit="vertical"
