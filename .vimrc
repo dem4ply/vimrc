@@ -21,6 +21,8 @@ set tm=500
 " esto es para que se marque lo que busque
 set hlsearch
 
+let mapleader = "\<Space>"
+
 "DEBUG
 filetype off
 filetype indent off
@@ -170,3 +172,10 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 "cuendo eites snippets se abrirar en un split vertical
 let g:UltiSnipsEditSplit="vertical"
+
+"se agrega que muestre los caracteres ocultor
+set list
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+
+nnoremap <Leader>l :set list!<Enter>
+
