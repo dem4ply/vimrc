@@ -1,2 +1,3 @@
 
 AddTabularPattern = /^[^=]*\zs=
+AddTabularPattern : /^[^:]*\zs:

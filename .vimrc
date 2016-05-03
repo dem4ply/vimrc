@@ -20,6 +20,9 @@ set visualbell t_vb=
 set tm=500
 " esto es para que se marque lo que busque
 set hlsearch
+:set colorcolumn=80
+
+let g:airline_theme='wombat'
 
 let mapleader = "\<Space>"
 
@@ -47,7 +50,7 @@ set iskeyword-=_
 au FileType c setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
 au FileType cpp setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
 
-au FileType python setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
+au FileType python setl shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 au FileType html setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
 au FileType javascript setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
 au FileType php setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
@@ -104,7 +107,8 @@ map <F2> :NERDTreeToggle <cr>
 " tag list
 map <F3> :TlistToggle <cr>
 " fuzzy file
-map <F4> :FufFile <cr>
+map <F4> :CtrlP <cr>
+map <F6> :FufFile <cr>
 " pestañas
 map  <C-t> :tabnew <CR>
 " mapeo de los tags de c c++
@@ -178,4 +182,39 @@ set list
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
 nnoremap <Leader>l :set list!<Enter>
+
+
+
+"agrega el espacio en los parentecis
+
+
+function! Preserver( command )
+	let _s = @/
+	let l = line(".")
+	let c = col(".")
+	execute a:command
+	let @/ = _s
+	call cursor( l, c )
+endfunction
+
+function! Add_space()
+	call Preserver("%s/\\v(\\()(\\w|\\(|')/\\1 \\2/g")
+	call Preserver("%s/\\v(\\w|\\)|')(\\))/\\1 \\2/g")
+endfunction
+
+"nmap _$ :call Preserver( "%s/\\s\\+$//e" )<CR>
+
+
+
+
+
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
