@@ -11,7 +11,7 @@ syntax on
 set ruler	"show the line number on the bar"
 set number
 set autoindent	"auto indent"
-set nosmartindent
+"set nosmartindent
 set tabstop=3 softtabstop=3 shiftwidth=3 noexpandtab
 "set cursorline
 set noerrorbells	"me quita el estres del bell"
@@ -27,11 +27,9 @@ let g:airline_theme='wombat'
 let mapleader = "\<Space>"
 
 "DEBUG
-filetype off
-filetype indent off
+filetype indent on
 set nocp
 filetype plugin on
-syntax on
 
 syntax on
 
@@ -41,16 +39,9 @@ set foldmethod=syntax
 set foldcolumn=1
 set foldlevel=4
 
-" el _ es el fin de una palabra
-set iskeyword-=_
-
-" el _ es el fin de una palabra
-set iskeyword-=_
-
 au FileType c setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
 au FileType cpp setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
 
-au FileType python setl shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 au FileType html setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
 au FileType javascript setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
 au FileType php setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
@@ -66,6 +57,7 @@ au FileType sql setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
 au FileType java setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
 
 autocmd FileType python setlocal foldenable foldmethod=syntax
+au FileType python setl shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 
 "	backup
 set backup
@@ -80,6 +72,9 @@ let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
 
 set background=dark
 colorscheme chlordane
+" quitar el fondo negro y se vuelva trasparente
+hi Normal ctermbg=None
+hi NonText ctermbg=None
 
 " mapeo de teclas
 :set pastetoggle=<F11>
@@ -142,10 +137,6 @@ let g:user_zen_expandabbr_key = '<c-y>'
 
 let g:use_zen_complete_tag = 1
 
-set foldmethod=syntax
-set foldcolumn=1
-set foldlevel=4
-
 function! JavaScriptFold() 
 	setl foldmethod=syntax
 	setl foldlevelstart=5
@@ -171,8 +162,8 @@ let g:jedi#completions_enabled = 1
 " ctrl+j se mueve al siguiente campo
 " ctrl+k se mueve al anteriror campo
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsJumpForwardTrigger="<c-J>"
+let g:UltiSnipsJumpBackwardTrigger="<c-K>"
 
 "cuendo eites snippets se abrirar en un split vertical
 let g:UltiSnipsEditSplit="vertical"
@@ -202,11 +193,7 @@ function! Add_space()
 	call Preserver("%s/\\v(\\w|\\)|')(\\))/\\1 \\2/g")
 endfunction
 
-"nmap _$ :call Preserver( "%s/\\s\\+$//e" )<CR>
-
-
-
-
+nmap <leader>_$ :call Preserver( "%s/\\s\\+$//e" )<CR>
 
 
 set statusline+=%#warningmsg#
@@ -215,6 +202,5 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
-
