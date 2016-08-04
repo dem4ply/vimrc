@@ -58,6 +58,7 @@ au FileType java setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
 
 autocmd FileType python setlocal foldenable foldmethod=syntax
 au FileType python setl shiftwidth=4 tabstop=4 softtabstop=4 expandtab
+au FileType yaml setl shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 
 "	backup
 set backup
