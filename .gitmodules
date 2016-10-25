@@ -49,3 +49,24 @@
 [submodule "bundle/emmet-vim"]
 	path = bundle/emmet-vim
 	url = https://github.com/mattn/emmet-vim.git
+[submodule "bundle/plantuml-syntax"]
+	path = bundle/plantuml-syntax
+	url = https://github.com/aklt/plantuml-syntax.git
+[submodule "bundle/vim-gitgutter"]
+	path = bundle/vim-gitgutter
+	url = git://github.com/airblade/vim-gitgutter.git
+[submodule "bundle/vim-emoji"]
+	path = bundle/vim-emoji
+	url = https://github.com/junegunn/vim-emoji.git
+[submodule "bundle/vim-flake8"]
+	path = bundle/vim-flake8
+	url = https://github.com/nvie/vim-flake8.git
+[submodule "bundle/vim-pyunit"]
+	path = bundle/vim-pyunit
+	url = https://github.com/nvie/vim-pyunit.git
+[submodule "vim-pyunit"]
+	path = vim-pyunit
+	url = https://github.com/nvie/vim-pyunit.git
+[submodule "bundle/python-mode"]
+	path = bundle/python-mode
+	url = https://github.com/klen/python-mode.git

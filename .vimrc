@@ -6,11 +6,17 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
+
+" abre un .vimrc local del pwd acutal
+:set exrc
+
 "	generales
 syntax on
 set ruler	"show the line number on the bar"
 set number
 set autoindent	"auto indent"
+" mejor autocomple
+set wildmode=longest,full
 "set nosmartindent
 set tabstop=3 softtabstop=3 shiftwidth=3 noexpandtab
 "set cursorline
@@ -19,8 +25,9 @@ set visualbell t_vb=
 "set t_vb=
 set tm=500
 " esto es para que se marque lo que busque
-set hlsearch
-:set colorcolumn=80
+set hlsearch incsearch
+" linia roja en el caracter 80
+set colorcolumn=80
 
 let g:airline_theme='wombat'
 
@@ -35,7 +42,7 @@ syntax on
 
 let python_highlight_all = 1
 
-set foldmethod=syntax
+set foldmethod=indent
 set foldcolumn=1
 set foldlevel=4
 
@@ -74,16 +81,17 @@ let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
 set background=dark
 colorscheme chlordane
 " quitar el fondo negro y se vuelva trasparente
-hi Normal ctermbg=None
-hi NonText ctermbg=None
+" no sirve por un plugin y al final era molesto
+"hi Normal ctermbg=None
+"hi NonText ctermbg=None
 
 " mapeo de teclas
-:set pastetoggle=<F11>
+set pastetoggle=<F11>
 " movimiento entre splits
-map <C-k> <C-W><UP>
-map <C-j> <C-W><DOWN>
-map <C-h> <C-W><LEFT>
-map <C-l> <C-W><RIGHT>
+map <C-k> <C-W>k
+map <C-j> <C-W>j
+map <C-h> <C-W>h
+map <C-l> <C-W>l
 
 " cambiar el tamaño de split
 "map <S-C-k> <C-W>-
@@ -138,7 +146,7 @@ let g:user_zen_expandabbr_key = '<c-y>'
 
 let g:use_zen_complete_tag = 1
 
-function! JavaScriptFold() 
+function! JavaScriptFold()
 	setl foldmethod=syntax
 	setl foldlevelstart=5
 	syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
@@ -156,6 +164,9 @@ au FileType javascript setl fen
 let g:jedi#use_tabs_not_buffers = 1
 let g:jedi#use_splits_not_buffers = "left"
 let g:jedi#completions_enabled = 1
+let g:jedi#documentation_command = "<leader>K"
+let ropevim_vim_completion=0
+let ropevim_extended_complete=0
 
 
 " mapa de claves
@@ -194,7 +205,7 @@ function! Add_space()
 	call Preserver("%s/\\v(\\w|\\)|')(\\))/\\1 \\2/g")
 endfunction
 
-nmap <leader>_$ :call Preserver( "%s/\\s\\+$//e" )<CR>
+nnoremap <leader>_$ :call Preserver( "%s/\\s\\+$//e" )<CR>
 
 
 set statusline+=%#warningmsg#
@@ -205,3 +216,79 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+let g:syntastic_quiet_messages = { "type": "style" }
+let g:syntastic_loc_list_height = 3
+
+let g:syntastic_rst_checkers = [ "syntastic-rst-sphinx" ]
+
+let NERDTreeIgnore = [ '\.pyc$', '^__pycache__$' ]
+
+nnoremap <leader>ev :tabnew $MYVIMRC<Enter>
+nnoremap <leader>sv :source $MYVIMRC<Enter>
+nnoremap <leader>nu :setlocal number!<Enter>
+
+inoremap jk <esc>
+vnoremap jk <esc>
+"inoremap <esc> <nop>
+"
+
+"echom ">^.^<"
+
+let g:flake8_quickfix_height=3
+let g:flake8_show_quickfix=0
+
+"autocmd BufWritePost *.py call Flake8()
+
+let g:PyUnitTestsStructure='nose'
+let g:PyUnitTestPrefix=''
+let g:PyUnitCmd='nosetests -q --with-machineout -l=ERROR'
+
+
+nnoremap <leader>1 yyPVr=jyypVr=
+nnoremap <leader>2 yyPVr*jyypVr*
+nnoremap <leader>3 yypVr=
+nnoremap <leader>4 yypVr-
+nnoremap <leader>5 yypVr^
+nnoremap <leader>6 yypVr"
+
+
+" Don't run pylint on every save
+let g:pymode = 1
+let g:pymode_breakpoint = 0
+let g:pymode_breakpoint_bind = '<leader>b'
+let g:pymode_doc = 0
+let g:pymode_doc_bind = '<leader>K'
+let g:pymode_folding = 0
+let g:pymode_indent = 0
+let g:pymode_lint = 0
+let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
+let g:pymode_lint_cwindow = 1
+let g:pymode_lint_ignore = ''
+let g:pymode_lint_message = 1
+let g:pymode_lint_on_fly = 0
+let g:pymode_lint_on_write = 0
+let g:pymode_lint_select = ''
+let g:pymode_lint_signs = 1
+let g:pymode_motion = 0
+let g:pymode_options = 0
+let g:pymode_paths = []
+let g:pymode_quickfix_maxheight = 6
+let g:pymode_quickfix_minheight = 3
+let g:pymode_rope = 1
+let g:pymode_rope_completion = 0
+let g:pymode_rope_regenerate_on_write = 0
+let g:pymode_run = 0
+let g:pymode_run_bind = '<leader>r'
+let g:pymode_trim_whitespaces = 1
+
+
+
+" emojis emojis everywhere
+set completefunc=emoji#complete
+
+nnoremap <leader>se :%s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<enter>
+
+
+iab lorem Lorem ipsum dolor sit amet, consectetur adipiscing elit
+iab llorem Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam lacus ligula, accumsan id imperdiet rhoncus, dapibus vitae arcu.  Nulla non quam erat, luctus consequat nisi
+iab lllorem Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lacus ligula, accumsan id imperdiet rhoncus, dapibus vitae arcu. Nulla non quam erat, luctus consequat nisi. Integer hendrerit lacus sagittis erat fermentum tincidunt. Cras vel dui neque. In sagittis commodo luctus. Mauris non metus dolor, ut suscipit dui. Aliquam mauris lacus, laoreet et consequat quis, bibendum id ipsum. Donec gravida, diam id imperdiet cursus, nunc nisl bibendum sapien, eget tempor neque elit in tortor
