@@ -92,7 +92,6 @@ map <C-k> <C-W>k
 map <C-j> <C-W>j
 map <C-h> <C-W>h
 map <C-l> <C-W>l
-
 " cambiar el tamaño de split
 "map <S-C-k> <C-W>-
 "map <S-C-j> <C-W>+
@@ -165,6 +164,12 @@ let g:jedi#use_tabs_not_buffers = 1
 let g:jedi#use_splits_not_buffers = "left"
 let g:jedi#completions_enabled = 1
 let g:jedi#documentation_command = "<leader>K"
+let g:jedi#smart_auto_mappings = 0
+let g:jedi#auto_close_doc = 1
+
+" set completeopt-=preview
+au CompleteDone * pclose
+
 let ropevim_vim_completion=0
 let ropevim_extended_complete=0
 
@@ -206,6 +211,7 @@ function! Add_space()
 endfunction
 
 nnoremap <leader>_$ :call Preserver( "%s/\\s\\+$//e" )<CR>
+nnoremap <leader>ts :call Add_space()<CR>
 
 
 set statusline+=%#warningmsg#
@@ -213,7 +219,7 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_loc_list = 2
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_quiet_messages = { "type": "style" }
@@ -257,9 +263,9 @@ let g:pymode = 1
 let g:pymode_breakpoint = 0
 let g:pymode_breakpoint_bind = '<leader>b'
 let g:pymode_doc = 0
-let g:pymode_doc_bind = '<leader>K'
-let g:pymode_folding = 0
-let g:pymode_indent = 0
+let g:pymode_doc_bind = ''
+let g:pymode_folding = 1
+let g:pymode_indent = 1
 let g:pymode_lint = 0
 let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
 let g:pymode_lint_cwindow = 1
@@ -280,7 +286,6 @@ let g:pymode_rope_regenerate_on_write = 0
 let g:pymode_run = 0
 let g:pymode_run_bind = '<leader>r'
 let g:pymode_trim_whitespaces = 1
-
 
 
 " emojis emojis everywhere
