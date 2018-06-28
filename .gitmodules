@@ -70,3 +70,12 @@
 [submodule "bundle/python-mode"]
 	path = bundle/python-mode
 	url = https://github.com/klen/python-mode.git
+[submodule "bundle/vim-systemd-syntax"]
+	path = bundle/vim-systemd-syntax
+	url = https://github.com/Matt-Deacalion/vim-systemd-syntax.git
+[submodule "bundle/vim-rst-tables"]
+	path = bundle/vim-rst-tables
+	url = https://github.com/nvie/vim-rst-tables.git
+[submodule "bundle/VOoM"]
+	path = bundle/VOoM
+	url = https://github.com/vim-voom/VOoM

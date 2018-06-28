@@ -161,7 +161,7 @@ au FileType javascript setl fen
 
 "configuracion de jedi
 let g:jedi#use_tabs_not_buffers = 1
-let g:jedi#use_splits_not_buffers = "left"
+let g:jedi#use_splits_not_buffers = "winwidth"
 let g:jedi#completions_enabled = 1
 let g:jedi#documentation_command = "<leader>K"
 let g:jedi#smart_auto_mappings = 0
@@ -228,6 +228,7 @@ let g:syntastic_loc_list_height = 3
 let g:syntastic_rst_checkers = [ "syntastic-rst-sphinx" ]
 
 let NERDTreeIgnore = [ '\.pyc$', '^__pycache__$' ]
+let NERDTreeWinPos = "right"
 
 nnoremap <leader>ev :tabnew $MYVIMRC<Enter>
 nnoremap <leader>sv :source $MYVIMRC<Enter>
@@ -259,7 +260,7 @@ nnoremap <leader>6 yypVr"
 
 
 " Don't run pylint on every save
-let g:pymode = 1
+let g:pymode = 0
 let g:pymode_breakpoint = 0
 let g:pymode_breakpoint_bind = '<leader>b'
 let g:pymode_doc = 0
