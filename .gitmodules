@@ -79,3 +79,12 @@
 [submodule "bundle/VOoM"]
 	path = bundle/VOoM
 	url = https://github.com/vim-voom/VOoM
+[submodule "bundle/omnisharp-vim"]
+	path = bundle/omnisharp-vim
+	url = https://github.com/OmniSharp/omnisharp-vim.git
+[submodule "bundle/vim-surround"]
+	path = bundle/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "/home/dem4ply/.vim/bundle/vimproc.vim"]
+	path = /home/dem4ply/.vim/bundle/vimproc.vim
+	url = https://github.com/Shougo/vimproc.vim.git

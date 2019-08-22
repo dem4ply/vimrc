@@ -7,6 +7,8 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
+" inoremap <Nul> <C-x><C-o>
+
 " abre un .vimrc local del pwd acutal
 :set exrc
 
@@ -14,9 +16,19 @@ noremap <Right> <NOP>
 syntax on
 set ruler	"show the line number on the bar"
 set number
+set relativenumber
 set autoindent	"auto indent"
 " mejor autocomple
 set wildmode=longest,full
+" cosas para C#
+set completeopt=longest,menuone,preview
+set previewheight=5
+" let g:OmniSharp_server_type = 'roslyn'
+" let g:OmniSharp_server_use_mono = 1
+let g:OmniSharp_server_stdio = 1
+" let g:OmniSharp_server_stdio = 0
+" let g:OmniSharp_server_path = "~/.omnisharp/omnisharp-roslyn/run"
+
 "set nosmartindent
 set tabstop=3 softtabstop=3 shiftwidth=3 noexpandtab
 "set cursorline
@@ -47,6 +59,8 @@ set foldcolumn=1
 set foldlevel=4
 
 au FileType c setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
+au FileType cs setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
+autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
 au FileType cpp setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
 
 au FileType html setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
@@ -62,14 +76,18 @@ au FileType cfscript setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
 au FileType rst setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
 au FileType sql setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
 au FileType java setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
+au FileType ruby setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
 
-autocmd FileType python setlocal foldenable foldmethod=syntax
+autocmd FileType python setlocal foldenable foldmethod=indent
 au FileType python setl shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 au FileType yaml setl shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 
 "	backup
 set backup
 set backupdir=~/.vim_runtime/vim_backup
+
+set undofile
+set undodir=~/.vim_runtime/vim_undo
 
 set formatprg=par\ -w80jeq
 
@@ -113,7 +131,7 @@ map <F3> :TlistToggle <cr>
 map <F4> :CtrlP <cr>
 map <F6> :FufFile <cr>
 " pestañas
-map  <C-t> :tabnew <CR>
+map <C-t> :tabnew <CR>
 " mapeo de los tags de c c++
 map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 " historias de undos
@@ -128,6 +146,7 @@ let Tlist_WinWidth = 40
 " poner el tag list a la derecha
 let Tlist_Use_Right_Window = 1
 
+" zen es para espandir html
 let g:user_zen_settings = {
 \  'indentation' : '\t',
 \  'perl' : {
@@ -227,12 +246,15 @@ let g:syntastic_loc_list_height = 3
 
 let g:syntastic_rst_checkers = [ "syntastic-rst-sphinx" ]
 
-let NERDTreeIgnore = [ '\.pyc$', '^__pycache__$' ]
+let NERDTreeIgnore = [ '\.pyc$', '^__pycache__$', '.meta' ]
 let NERDTreeWinPos = "right"
 
 nnoremap <leader>ev :tabnew $MYVIMRC<Enter>
 nnoremap <leader>sv :source $MYVIMRC<Enter>
-nnoremap <leader>nu :setlocal number!<Enter>
+"toggle number
+nnoremap <leader>nu :setlocal number!<Enter> 
+"toggle relative number
+nnoremap <leader>nr :setlocal relativenumber!<Enter>
 
 inoremap jk <esc>
 vnoremap jk <esc>
@@ -260,7 +282,7 @@ nnoremap <leader>6 yypVr"
 
 
 " Don't run pylint on every save
-let g:pymode = 0
+let g:pymode = 1
 let g:pymode_breakpoint = 0
 let g:pymode_breakpoint_bind = '<leader>b'
 let g:pymode_doc = 0
@@ -287,6 +309,12 @@ let g:pymode_rope_regenerate_on_write = 0
 let g:pymode_run = 0
 let g:pymode_run_bind = '<leader>r'
 let g:pymode_trim_whitespaces = 1
+let g:pymode_python = 'python3'
+let g:pymode_rope_rename_module_bind = '<C-c>r1r'
+let g:pymode_rope_organize_imports_bind = '<C-c>ro'
+let g:pymode_rope_autoimport_bind = '<C-c>ra'
+let g:pymode_rope_module_to_package_bind = '<C-c>r1p'
+let g:pymode_rope_use_function_bind = '<C-c>ru'
 
 
 " emojis emojis everywhere
@@ -298,3 +326,59 @@ nnoremap <leader>se :%s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<ent
 iab lorem Lorem ipsum dolor sit amet, consectetur adipiscing elit
 iab llorem Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam lacus ligula, accumsan id imperdiet rhoncus, dapibus vitae arcu.  Nulla non quam erat, luctus consequat nisi
 iab lllorem Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lacus ligula, accumsan id imperdiet rhoncus, dapibus vitae arcu. Nulla non quam erat, luctus consequat nisi. Integer hendrerit lacus sagittis erat fermentum tincidunt. Cras vel dui neque. In sagittis commodo luctus. Mauris non metus dolor, ut suscipit dui. Aliquam mauris lacus, laoreet et consequat quis, bibendum id ipsum. Donec gravida, diam id imperdiet cursus, nunc nisl bibendum sapien, eget tempor neque elit in tortor
+
+
+augroup omnisharp_commands
+    autocmd!
+
+    " When Syntastic is available but not ALE, automatic syntax check on events
+    " (TextChanged requires Vim 7.4)
+    " autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
+
+    " Show type information automatically when the cursor stops moving
+    autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
+
+    " The following commands are contextual, based on the cursor position.
+    autocmd FileType cs nnoremap <buffer> gd :OmniSharpGotoDefinition<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fi :OmniSharpFindImplementations<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fs :OmniSharpFindSymbol<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fu :OmniSharpFindUsages<CR>
+
+    " Finds members in the current buffer
+    autocmd FileType cs nnoremap <buffer> <Leader>fm :OmniSharpFindMembers<CR>
+
+    autocmd FileType cs nnoremap <buffer> <Leader>fx :OmniSharpFixUsings<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>tt :OmniSharpTypeLookup<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>dc :OmniSharpDocumentation<CR>
+    autocmd FileType cs nnoremap <buffer> <C-\> :OmniSharpSignatureHelp<CR>
+    autocmd FileType cs inoremap <buffer> <C-\> <C-o>:OmniSharpSignatureHelp<CR>
+
+
+    " Navigate up and down by method/property/field
+    " autocmd FileType cs nnoremap <buffer> <C-k> :OmniSharpNavigateUp<CR>
+    " autocmd FileType cs nnoremap <buffer> <C-j> :OmniSharpNavigateDown<CR>
+augroup END
+
+
+" Contextual code actions (uses fzf, CtrlP or unite.vim when available)
+" nnoremap <Leader><Space> :OmniSharpGetCodeActions<CR>
+" Run code actions with text selected in visual mode to extract method
+" xnoremap <Leader><Space> :call OmniSharp#GetCodeActions('visual')<CR>
+
+" Rename with dialog
+" nnoremap <Leader>nm :OmniSharpRename<CR>
+" nnoremap <F2> :OmniSharpRename<CR>
+" Rename without dialog - with cursor on the symbol to rename: `:Rename newname`
+" command! -nargs=1 Rename :call OmniSharp#RenameTo("<args>")
+
+" nnoremap <Leader>cf :OmniSharpCodeFormat<CR>
+
+" Start the omnisharp server for the current solution
+" nnoremap <Leader>ss :OmniSharpStartServer<CR>
+" nnoremap <Leader>sp :OmniSharpStopServer<CR>
+
+" Add syntax highlighting for types and interfaces
+" nnoremap <Leader>th :OmniSharpHighlightTypes<CR>
+
+" Enable snippet completion
+" let g:OmniSharp_want_snippet=1
