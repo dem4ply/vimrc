@@ -65,6 +65,7 @@ au FileType cpp setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
 
 au FileType html setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
 au FileType javascript setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
+au FileType vue setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
 au FileType php setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
 au FileType handlebars setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
 au FileType objcpp setl shiftwidth=3 tabstop=3 softtabstop=3 noexpandtab
@@ -89,7 +90,7 @@ set backupdir=~/.vim_runtime/vim_backup
 set undofile
 set undodir=~/.vim_runtime/vim_undo
 
-set formatprg=par\ -w80jeq
+set formatprg=par\ -w79jeq
 
 " personalisa los colores
 set t_Co=256
