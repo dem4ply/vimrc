@@ -85,8 +85,8 @@
 [submodule "bundle/vim-surround"]
 	path = bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
-[submodule "/home/dem4ply/.vim/bundle/vimproc.vim"]
-	path = /home/dem4ply/.vim/bundle/vimproc.vim
+[submodule "bundle/vimproc.vim"]
+	path = bundle/vimproc.vim
 	url = https://github.com/Shougo/vimproc.vim.git
 [submodule "bundle/sparkup"]
 	path = bundle/sparkup
