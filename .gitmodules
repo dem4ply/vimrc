@@ -94,3 +94,9 @@
 [submodule "bundle/vim-vue"]
 	path = bundle/vim-vue
 	url = https://github.com/posva/vim-vue.git
+[submodule "bundle/tablify"]
+	path = bundle/tablify
+	url = https://github.com/stormherz/tablify.git
+[submodule "bundle/clang_complete"]
+	path = bundle/clang_complete
+	url = https://github.com/xavierd/clang_complete.git

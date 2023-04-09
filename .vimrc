@@ -7,7 +7,7 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
-" inoremap <Nul> <C-x><C-o>
+inoremap <Nul> <C-x><C-o>
 
 " abre un .vimrc local del pwd acutal
 :set exrc
@@ -198,6 +198,7 @@ let ropevim_extended_complete=0
 " tab activa el snippet
 " ctrl+j se mueve al siguiente campo
 " ctrl+k se mueve al anteriror campo
+"UltiSnips#TrackChange
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-J>"
 let g:UltiSnipsJumpBackwardTrigger="<c-K>"
@@ -211,6 +212,32 @@ set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
 nnoremap <Leader>l :set list!<Enter>
 
+
+" libreria de c del paquete clang de archlinux
+let g:clang_library_path='/usr/lib/libclang.so'
+" Clang Complete Settings
+let g:clang_use_library=1
+" if there's an error, allow us to see it
+let g:clang_complete_copen=1
+let g:clang_complete_macros=1
+let g:clang_complete_patterns=0
+" Limit memory use
+let g:clang_memory_percent=70
+" Remove -std=c++11 if you don't use C++ for everything like I do.
+let g:clang_user_options=' -std=c++11 || exit 0'
+" Set this to 0 if you don't want autoselect, 1 if you want autohighlight,
+" and 2 if you want autoselect. 0 will make you arrow down to select the first
+" option, 1 will select the first option for you, but won't insert it unless you
+" press enter. 2 will automatically insert what it thinks is right. 1 is the most
+" convenient IMO, and it defaults to 0.
+let g:clang_auto_select=1
+
+set conceallevel=2
+set concealcursor=vin
+let g:clang_snippets=1
+let g:clang_conceal_snippets=1
+" The single one that works with clang_complete
+let g:clang_snippets_engine='clang_complete'
 
 
 "agrega el espacio en los parentecis
@@ -252,6 +279,7 @@ let NERDTreeWinPos = "right"
 
 nnoremap <leader>ev :tabnew $MYVIMRC<Enter>
 nnoremap <leader>sv :source $MYVIMRC<Enter>
+nnoremap <leader>ec :tabnew $XDG_CONFIG_HOME/chibi/chibi.py<Enter>
 "toggle number
 nnoremap <leader>nu :setlocal number!<Enter> 
 "toggle relative number
@@ -271,6 +299,10 @@ let g:flake8_quickfix_height=3
 let g:flake8_show_quickfix=0
 
 "autocmd BufWritePost *.py call Flake8()
+autocmd BufWritePre *.c :%s/\s\+$//e
+autocmd BufWritePre *.h :%s/\s\+$//e
+autocmd BufWritePre *.cpp :%s/\s\+$//e
+autocmd BufWritePre *.hpp :%s/\s\+$//e
 
 let g:PyUnitTestsStructure='nose'
 let g:PyUnitTestPrefix=''
@@ -322,7 +354,7 @@ let g:pymode_rope_use_function_bind = '<C-c>ru'
 
 
 " emojis emojis everywhere
-set completefunc=emoji#complete
+" set completefunc=emoji#complete
 
 nnoremap <leader>se :%s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<enter>
 
